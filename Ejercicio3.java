@@ -1,14 +1,11 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class Ejercicio3 {
     public static void main(String args[]) {
 
         try {
-            BufferedReader br1 = new BufferedReader(new FileReader("fichero1.dat")); ;
-            BufferedReader br2 = new BufferedReader(new FileReader("fichero2.dat"));
+            BufferedReader br1 = new BufferedReader(new FileReader(args[0])); ;
+            BufferedReader br2 = new BufferedReader(new FileReader(args[1]));
             String fichero1 = "";
             String fichero2 = "";
             String texto = "";
@@ -27,6 +24,12 @@ public class Ejercicio3 {
             System.out.print(texto);
             br1.close();
             br2.close();
+
+            BufferedWriter bw = new BufferedWriter(new FileWriter(args[2]));
+
+            bw.write(texto);
+            bw.close();
+
         } catch (FileNotFoundException fnfe) {
             System.out.println("No se encontró el archivo");
         } catch (IOException io) {
